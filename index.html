@@ -6977,21 +6977,21 @@
         overflow-x: clip;
       }
       #estrada .hat-artifact-wrap {
-        width: min(100%, 360px) !important;
-        max-width: 100% !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+        width: calc(100% + var(--gutter)) !important;
+        max-width: none !important;
+        margin-left: 0 !important;
+        margin-right: calc(-1 * var(--gutter)) !important;
       }
     }
 
     @media (max-width: 767px) {
-      /* 1. Capa Hero Mobile: Eixo Editorial Centralizado + Cofre Sem Emenda */
+      /* 1. Capa Hero Mobile: Eixo Editorial Centralizado + Cofre Full-Bleed Sem Borda */
       .hero-cinema {
         background: radial-gradient(circle at 50% 68%, #FFF6E6 0%, #FCE6C5 62%, #F6D8AE 100%);
         padding-top: env(safe-area-inset-top, 0px);
       }
       .hero-cinema__overlay {
-        padding: clamp(28px, 7vw, 40px) var(--gutter) 8px;
+        padding: clamp(28px, 7vw, 40px) var(--gutter) 4px;
       }
       .hero-cinema__copy {
         display: flex;
@@ -7023,19 +7023,22 @@
         max-width: 30ch;
       }
       .hero-cinema__media {
-        margin-top: 4px;
-        padding: 4px 10px 20px;
+        margin: 4px 0 0;
+        padding: 0;
+        width: 100%;
         -webkit-mask-image: none;
         mask-image: none;
-        display: flex;
-        justify-content: center;
+        display: block;
       }
       .hero-cinema__img {
-        width: min(100%, 380px);
-        max-height: 350px;
+        display: block;
+        width: 100%;
+        max-width: none;
+        max-height: none;
         height: auto;
-        object-fit: contain;
-        filter: drop-shadow(0 18px 28px rgba(58, 31, 13, 0.18));
+        margin: 0;
+        object-fit: cover;
+        filter: drop-shadow(0 14px 24px rgba(58, 31, 13, 0.15));
       }
 
       /* 2. Cena 01 (#estrada) & Divisores Simétricos no Eixo Central */
