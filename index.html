@@ -10643,10 +10643,6 @@
       let lastFinishedAt = -Infinity;
       let io = null;
 
-      if (!reduced && hasIO && counterLive) {
-        counterLive.textContent = '~0,4 milhões*';
-      }
-
       const runCounter = (force = false) => {
         if (!counterLive || reduced) {
           if (counterLive) counterLive.textContent = '~4 milhões*';
@@ -10660,13 +10656,13 @@
           cancelAnimationFrame(rafId);
           rafId = 0;
         }
-        if (force) counterLive.textContent = '~0,4 milhões*';
+        counterLive.textContent = '~0,4 milhões*';
         if (demandHero) {
           demandHero.classList.remove('is-settled');
           demandHero.classList.add('is-counting');
         }
-        const leadInMs = 240;
-        const dur = 2650;
+        const leadInMs = 80;
+        const dur = 1150;
         const t0 = performance.now();
         const step = (now) => {
           const elapsed = now - t0;
@@ -10731,9 +10727,7 @@
         return;
       }
       const target = demandHero || panorama;
-      const options = demandHero
-        ? { threshold: 0.72, rootMargin: '0px 0px -10% 0px' }
-        : { threshold: 0.22 };
+      const options = { threshold: 0.15 };
       io = new IntersectionObserver((entries) => {
         for (const en of entries) {
           if (en.isIntersecting) {
